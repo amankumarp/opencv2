@@ -1,0 +1,576 @@
+# it is first tutorials of opencv
+import cv2
+img=cv2.imread("aaa.jpg")
+cv2.imshow("output",img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+# second tutorials
+import cv2
+
+img=cv2.imread("aaa.jpg",0) # it is  convert the color  img to gray img
+cv2.imshow("output ",img) # it is show the image
+cv2.waitKey(0) # it function is wait for press key
+cv2.destroyAllWindows()# it function destroy the open all windows
+
+#third tutoriaals
+import cv2
+img=cv2.imread('aaa.jpg')
+cv2.imshow('output',img)
+cv2.imwrite('aman.png',img)  #it function is write the new image
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+#fourth tutorial
+import cv2
+img=cv2.imread('aaa.jpg')
+cv2.imshow('output',img)
+# it function return the (320, 240, 3) (height pixels ,width pixel,layer)
+print(img.shape)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+#five tutorial
+import cv2
+img =cv2.imread('aaa.jpg')# for grayscale image img=cv2.imread("file.jpg",0)
+cv2.imshow('op',img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)# it line convert img to grayscale
+cv2.imshow('gray',gray)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+#six tutorials
+import cv2
+img=cv2.imread('aaa.jpg',0)  # it is convert the image grayscale
+cv2.imshow('output',img)
+cv2.waitKey(0)
+rt,bw=cv2.threshold(img,127,255,cv2.THRESH_BINARY)  #it is convert the grayscale image into binary image(balck & white )
+cv2.imshow('bw',bw)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+#seven tutorial
+#RGB--HSV  color convert
+# R(red):0-255,G(green):0-255,B(blue):0-255
+
+#color filter  color space
+# hue:0-180,saturation:0-255,value:0-255
+
+
+import cv2
+img=cv2.imread('aaa.jpg')
+hsv=cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
+cv2.imshow('hsv$',hsv)
+cv2.waitKey(0)
+cv2.imshow('hue ',hsv[ :, :,0])
+cv2.imshow('saturation ',hsv[ :, :,1])
+cv2.imshow('value',hsv[ :, :,2])
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+#eight tutorial
+import cv2
+import numpy as np
+img=cv2.imread('aaa.jpg')
+cv2.imshow("original",img)
+cv2.waitKey(0)
+b,g,r=cv2.split(img)
+zero=np.zeros(img.shape[ :2],dtype="uint8")
+print(zero)
+cv2.imshow('red',cv2.merge([zero,zero,r]))
+cv2.imshow('green',cv2.merge([zero,g,zero]))
+cv2.imshow('blue',cv2.merge([b,zero,zero]))
+cv2.waitKey(0)
+
+cv2.destroyAllWindows()
+
+#nine tutorial
+import cv2
+import numpy as np
+
+img=cv2.imread('aaa.jpg')
+cv2.imshow('output',img)
+height,width=img.shape[ :2]
+q_height ,q_width=height/4,width/4
+t=np.float32([[1,0,q_width],
+              [0,1,q_height]])
+img_translation=cv2.warpAffine(img,t,(width,height))
+cv2.imshow('output',img_translation)
+
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+#ten tutorial
+
+import cv2
+import numpy as np
+img=cv2.imread("aaa.jpg")
+height,width=img.shape[ :2]
+rotation_mat=cv2.getRotationMatrix2D((width/2,height/2),180,.5)
+rotated_image=cv2.warpAffine(img,rotation_mat,(height,width))
+cv2.imshow('ratated image',rotated_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+#11th tutorials
+
+import cv2
+import numpy as np
+
+img=cv2.imread("aaa.jpg")
+rotated_img=cv2.transpose(img)
+cv2.imshow('rotated',rotated_img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+#12th tutorial
+import cv2
+import numpy as np
+
+img=cv2.imread("aaa.jpg")
+cv2.imshow('aman',img)
+cv2.waitKey(0)
+
+
+img_scale=cv2.resize(img,None,fx=.5,fy=.5)
+cv2.imshow('aman',img_scale)
+cv2.waitKey(0)
+
+
+img_scale1=cv2.resize(img,None,fx=2,fy=2,interpolation=cv2.INTER_CUBIC)
+cv2.imshow('aman',img_scale1)
+cv2.waitKey(0)
+
+
+
+img_scale2=cv2.resize(img,(900,400),fx=.5,fy=.5,interpolation=cv2.INTER_AREA)
+cv2.imshow('aman',img_scale2)
+cv2.waitKey(0)
+
+cv2.destroyAllWindows()
+
+
+#13 tutorials
+import cv2
+import numpy as np
+img=cv2.imread("aaa.jpg")
+smaller=cv2.pyrDown(img)
+cv2.imshow('smaller',smaller)
+cv2.waitKey(0)
+large=cv2.pyrUp(img)
+cv2.imshow('larger',large)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+#14 tutorials
+
+import cv2
+import numpy as np
+img=cv2.imread("aaa.jpg")
+#image cropping
+height,width=img.shape[ :2]
+s_row,s_c=int(height*.25),int(width*.25)
+e_row,e_c=int(height*.75),int(width*.75)
+
+
+cropped=img[s_row:e_row,s_c:e_c]
+cv2.imshow("original",img)
+cv2.waitKey(0)
+
+
+cv2.imshow("original",cropped)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+#15 tutorial
+
+
+import cv2
+import numpy as np
+
+img=cv2.imread("aaa.jpg")
+cv2.imshow('original',img)
+cv2.waitKey(0)
+m=np.ones(img.shape,dtype="uint8")*100
+added=cv2.add(img,m)
+cv2.imshow('added',added)
+cv2.waitKey(0)
+sub=cv2.subtract(img,m)
+cv2.imshow('added',sub)
+cv2.waitKey(0)
+mult=cv2.multiply(img,m)
+cv2.imshow('added',mult)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+#16 tutorials
+
+import cv2
+import numpy as np
+
+square=np.zeros((300,300),np.uint8)
+cv2.rectangle(square,(50,50),(250,250),255,-1)
+cv2.imshow('aman',square)
+cv2.waitKey(0)
+
+ellipse=np.zeros((300,300),np.uint8)
+cv2.ellipse(ellipse,(150,150),(150,150),30,0,180,255,-1)
+cv2.imshow('aman1',ellipse)
+cv2.waitKey(0)
+
+And=cv2.bitwise_and(square,ellipse)
+cv2.imshow("and",And)
+cv2.waitKey(0)
+Or=cv2.bitwise_or(square,ellipse)
+cv2.imshow("or",Or)
+cv2.waitKey(0)
+
+xor=cv2.bitwise_xor(square,ellipse)
+cv2.imshow("xor",xor)
+cv2.waitKey(0)
+
+Not=cv2.bitwise_not(square)
+cv2.imshow("not",Not)
+cv2.waitKey(0)
+
+
+Not=cv2.bitwise_not(ellipse)
+cv2.imshow("not2",Not)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+#17 tutorials
+import cv2
+import numpy as np
+img=cv2.imread("aaa.jpg")
+cv2.imshow('original',img)
+cv2.waitKey(0)
+
+kernel=np.ones((3,3),np.float32)/9
+
+blurred=cv2.filter2D(img,-1,kernel)
+cv2.imshow('3X3',blurred)
+cv2.waitKey(0)
+
+kernel2=np.ones((7,7),np.float32)/49
+blurred2=cv2.filter2D(img,-1,kernel2)
+cv2.imshow('7X7',blurred2)
+cv2.waitKey(0)
+
+
+cv2.destroyAllWindows()
+
+#18 tutorial
+import cv2
+import numpy as np
+
+
+img=cv2.imread("aaa.jpg")
+cv2.imshow('original',img)
+cv2.waitKey(0)
+
+
+blur=cv2.blur(img,(3,3))
+cv2.imshow('blur',blur)
+cv2.waitKey(0)
+
+
+gaussian=cv2.GaussianBlur(img,(7,7),0)
+cv2.imshow('Gaussion Blur image',gaussian)
+cv2.waitKey(0)
+
+median=cv2.medianBlur(img,5)
+cv2.imshow('median Blur image',gaussian)
+cv2.waitKey(0)
+
+bilateral=cv2.bilateralFilter(img,9,75,75)
+cv2.imshow('bilateral Blur image',bilateral)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+#19 tutorial
+import cv2
+
+cap=cv2.VideoCapture(0)
+
+while True:
+    ret,frame=cap.read()
+    cv2.imshow('camera',frame)
+    if cv2.waitKey(1)==13:
+        break
+
+
+cap.release()
+cv2.destroyAllWindows()
+
+#20 tutorial
+import cv2
+import matplotlib.pyplot as plt
+cap=cv2.VideoCapture(0)
+if cap.isOpened():
+    ret,frame=cap.read()
+else:
+    ret=False
+img1=cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
+plt.imshow(img1)
+plt.title("image")plt.xticks([])
+plt.yticks([])
+plt.show()
+cap.release()
+
+
+#21 tutorials
+import cv2
+
+def skech(image):
+    img_gray=cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+    img_gray_blur=cv2.GaussianBlur(img_gray,(5,5),0)
+    canny_edge=cv2.Canny(img_gray_blur,10,70)
+    ret,mask=cv2.threshold(canny_edge,70,255,cv2.THRESH_BINARY)
+    return mask
+
+
+
+
+
+cap=cv2.VideoCapture(0)
+
+
+while True:
+    ret,frame=cap.read()
+    cv2.imshow('video',skech(frame))
+    if cv2.waitKey(1)==13:
+        break
+cap.release()
+cv2.destroyAllWindows()
+
+
+#22 tutorials
+import cv2
+import numpy as np
+
+device= cv2.VideoCapture(0)
+while True:
+    ret,frame=device.read()
+    hsv=cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
+
+    lower_range=np.array([110,50,50])
+    upper_range=np.array([130,255,255])
+    mask=cv2.inRange(hsv,lower_range,upper_range)
+    cv2.imshow("show",mask)
+    cv2.imshow("show1",frame)
+    if cv2.waitKey(1)==13:
+        break
+device.release()
+cv2.destroyAllWindows()
+
+#23 tutorials
+
+import cv2
+import numpy as np
+
+
+device=cv2.VideoCapture(0)
+while True:
+    ret,frame=device.read()
+    hsv=cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
+    lower=np.array([110,50,50])
+    higer=np.array([130,255,255])
+    mask=cv2.inRange(hsv,lower,higer)
+    result1=cv2.bitwise_and(frame,frame,mask=mask)
+    cv2.imshow("original",frame)
+    cv2.imshow('mask',mask)
+    cv2.imshow('result',result1)
+    if cv2.waitKey(1)==13:
+        break
+device.release()
+
+cv2.destroyAllWindows()
+
+#24 tutorials
+
+import cv2
+import numpy as np
+
+
+def nothing(x):
+    pass
+img=np.zeros((300,512,3),np.uint8)
+cv2.namedWindow('image')
+cv2.createTrackbar('R','image',0,255,nothing)
+cv2.createTrackbar('G','image',0,255,nothing)
+cv2.createTrackbar('B','image',0,255,nothing)
+switch='0:OFF\n 1:ON'
+cv2.createTrackbar(switch,'image',0,1,nothing)
+
+
+
+
+while True:
+    cv2.imshow('video',img)
+    if cv2.waitKey(1)==13:
+        break
+    r=cv2.getTrackbarPos('R','image')
+    g=cv2.getTrackbarPos('G','image')
+    b=cv2.getTrackbarPos('B','image')
+    s=cv2.getTrackbarPos(switch,'image')
+
+
+    if s==0:
+        img[:]=0
+    else:
+        img[:]=[b,g,r]
+
+
+cv2.destroyAllWindows()
+
+#26 tutorials
+
+import cv2
+import numpy as np
+
+
+windowName='Drawing'
+img=np.zeros((512,512,3),np.uint8)
+cv2.namedWindow(windowName)
+
+
+def draw_circle(event,x,y,flags,param):
+    if event ==cv2.EVENT_LBUTTONDBLCLK:
+        cv2.circle(img,(x,y),40,(0,255,0),-1)
+    if event==cv2.EVENT_RBUTTONDOWN:
+        cv2.circle(img,(x,y),30,(255,0,0),-1)
+    if event==cv2.EVENT_LBUTTONDOWN:
+        cv2.circle(img,(x,y),20,(0,0,255),-1)
+cv2.setMouseCallback(windowName,draw_circle)
+while True:
+    cv2.imshow(windowName,img)
+    if cv2.waitKey(1)==13:
+        break
+cv2.destroyAllWindows()
+
+#27 tutorials
+import cv2
+import numpy as np
+
+
+img=cv2.imread("aaa.jpg")
+cv2.imshow('original',img)
+cv2.waitKey(0)
+
+
+#kernal matrix
+
+
+kernal=np.array([[-1,-1,-1],
+                 [-1,9,-1],
+                 [-1,-1,-1]])
+
+
+sharp=cv2.filter2D(img,-1,kernal)
+cv2.imshow('sharping_image',sharp)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+#28 tutorial
+import cv2
+import numpy as np
+
+
+hand=cv2.imread('aaa.jpg',0)
+ret,the=cv2.threshold(hand,70,255,cv2.THRESH_BINARY)
+_,contours,_=cv2.findContours(the.copy(),cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+hull=[cv2.convexHull(c) for c in contours]
+final=cv2.drawContours(hand,hull,-1,(255,0,0))
+
+
+cv2.imshow('original Image',hand)
+cv2.imshow('tresh',the)
+cv2.imshow('final',final)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+
+# hand gesture recoganation tutorials
+
+
+
+import cv2
+import numpy as np
+import math
+
+capture=cv2.VideoCapture(0)
+while capture.isOpened():
+    ret,frame=capture.read()
+    cv2.rectangle(frame,(100,100),(300,300),(255,0,0),0)
+    crop=frame[100:300,100:300]
+    blur=cv2.GaussianBlur(crop,(3,3),0)
+    hsv=cv2.cvtColor(blur,cv2.COLOR_BGR2HSV)
+    mask2=cv2.inRange(hsv,np.array([2,0,0]),np.array([20,255,255]))
+    kernal=np.ones((5,5))
+    dilation=cv2.dilate(mask2,kernal,iterations=1)
+    erosion=cv2.erode(dilation,kernal,iterations=1)
+    filtered=cv2.GaussianBlur(erosion,(3,3),0)
+    ret,thresh=cv2.threshold(filtered,127,255,0)
+    cv2.imshow("threshold",thresh)
+    image,contours,hierarchy=cv2.findContours(thresh.copy(),cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+    try:
+        contour=max(contours,key=lambda x: cv2.contourArea(x))
+        x,y,w,h=cv2.boudingRect(contour)
+        cv2.rectangle(crop,(x,y),(x+w,y+h),(0,0,255),0)
+        hull=cv2.convexHull(contour)
+        drawing=np.zeros(crop.shape,np.uint8)
+        cv2.drawContours(drawing,[contour],-1,(0,255,0),0)
+        cv2.drawContours(drawing,[hull],-1,(0,0,255),0)
+        hull=cv2.convexHull(contour,returnPoints=False)
+        defects=cv2.convexityDefects(contour,hull)
+        count_defects=0
+        for i in range(defects.shape[0]):
+            s,e,f,d=defects[i,0]
+            start=tuple(contour[s][0])
+            end=tuple(contour[e][0])
+            far=tuple(contour[f][0])
+            a=math.sqrt((end[0]-start[0])**2+(end[1]-start[1])**2)
+            b=math.sqrt((far[0]-start[0])**2+(far[1]-start[1])**2)
+            c=math.sqrt((end[0]-far[0])**2+(end[1]-far[1])**2)
+            angle=(math.acos((b**2+c**2-a**2)/(2*b*c))*180)/3.14
+            if angle<=90:
+                        count_defects+=1
+                        cv2.circle(crop,far,1,[0,0,255],-1)
+            cv2.line(crop,start,end,[0,255,0],2)
+        if count_defects==0:
+                        cv2.putText(frame,"ONE",(50,50),cv2.FONT_HERSHEY_SIMPLEX,2,(0,0,255),2)
+        elif count_defects==1:
+                        cv2.putText(frame,"TWO",(50,50),cv2.FONT_HERSHEY_SIMPLEX,2,(0,0,255),2)
+        elif count_defects==2:
+                        cv2.putText(frame,"THREE",(5,50),cv2.FONT_HERSHEY_SIMPLEX,2,(0,0,255),2)
+        elif count_defects==3:
+                        cv2.putText(frame,"FOUR",(50,50),cv2.FONT_HERSHEY_SIMPLEX,2,(0,0,255),2)
+        elif count_defects==4:
+                        cv2.putText(frame,"FIVE",(50,50),cv2.FONT_HERSHEY_SIMPLEX,2,(0,0,255),2)
+        else:
+            pass
+        cv2.imshow('gesture', frame)
+        image = np.hstack((drawing, crop))
+        cv2.imshow('contours', image)
+        if cv2.waitKey(1) == ord('q'):
+            break
+
+
+
+
+capture.release()
+cv2.destroyAllWindows()
+
